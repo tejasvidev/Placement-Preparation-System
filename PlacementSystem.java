@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 import exceptions.DuplicateApplicationException;
 import exceptions.NotEligibleException;
+import java.util.InputMismatchException;
 
 import model.Application;
 import model.Interview;
@@ -32,20 +33,25 @@ public class PlacementSystem {
             System.out.println("2. Employer");
             System.out.println("3. Exit");
             System.out.print("Enter choice: ");
-            int choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    studentMenu(scanner);
-                    break;
-                case 2:
-                    employerMenu(scanner);
-                    break;
-                case 3:
-                    System.out.println("Thank you for using the system.");
-                    scanner.close();
-                    System.exit(0);
-                default:
-                    System.out.println("Invalid choice. Please try again.");
+            try {
+                int choice = scanner.nextInt();
+                switch (choice) {
+                    case 1:
+                        studentMenu(scanner);
+                        break;
+                    case 2:
+                        employerMenu(scanner);
+                        break;
+                    case 3:
+                        System.out.println("Thank you for using the system.");
+                        scanner.close();
+                        System.exit(0);
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next(); 
             }
         }
     }
@@ -61,12 +67,13 @@ public class PlacementSystem {
             System.out.println("4. Check application status");
             System.out.println("5. Logout");
             System.out.print("Enter choice: ");
-            int choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    viewAvailableJobs();
-                    break;
-                case 2:
+            try {
+                int choice = scanner.nextInt();
+                switch (choice) {
+                    case 1:
+                        viewAvailableJobs();
+                        break;
+                    case 2:
                     submitStudentApplication(scanner);
                     break;
                 case 3:
@@ -80,6 +87,10 @@ public class PlacementSystem {
                     return; // Return to main menu
                 default:
                     System.out.println("Invalid choice. Please try again.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next(); // Clear the invalid input
             }
         }
     }
@@ -95,17 +106,18 @@ public class PlacementSystem {
             System.out.println("4. Update Application Status");
             System.out.println("5. Logout");
             System.out.print("Enter choice: ");
-            int choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    postJob(scanner);
-                    break;
-                case 2:
-                    viewApplications();
-                    break;
-                case 3:
-                    scheduleInterview(scanner);
-                    break;
+            try {
+                int choice = scanner.nextInt();
+                switch (choice) {
+                    case 1:
+                        postJob(scanner);
+                        break;
+                    case 2:
+                        viewApplications();
+                        break;
+                    case 3:
+                        scheduleInterview(scanner);
+                        break;
                 case 4:
                     updateApplicationStatus(scanner);
                     break;
@@ -114,6 +126,10 @@ public class PlacementSystem {
                     return; // Return to main menu
                 default:
                     System.out.println("Invalid choice. Please try again.");
+            }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next(); // Clear the invalid input
             }
         }
     }
@@ -156,7 +172,7 @@ public class PlacementSystem {
                 103,
                 "Charlie Brown",
                 "charlie.brown@example.com",
-                8.0,
+                4.0,
                 "CSE"
         ));
     }
