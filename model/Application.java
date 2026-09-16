@@ -27,6 +27,14 @@ public abstract class Application{
         return job;
     }
 
+    public String getStatus(){
+        return status;
+    }
+
+    public void setStatus(String status){
+        this.status=status;
+    }
+
     public String getApplicationSummary(){
         StringBuilder summary = new StringBuilder();
 

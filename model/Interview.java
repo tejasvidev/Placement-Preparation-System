@@ -38,4 +38,8 @@ public class Interview implements Interviewable{
         System.out.println("Date: "+date);
         System.out.println("Status: "+status);
     }
+
+    public Application getApplication() {
+        return application;
+    }
 }
