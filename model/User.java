@@ -5,6 +5,12 @@ public class User{
     protected String email;
 
     public User(String name, String email){
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Invalid name");
+        }
+        if (email == null || !email.contains("@") || !email.contains(".") || email.indexOf("@") >= email.lastIndexOf(".")) {
+            throw new IllegalArgumentException("Invalid email");
+        }
         this.name=name;
         this.email=email;
     }

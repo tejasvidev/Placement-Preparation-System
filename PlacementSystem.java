@@ -211,6 +211,7 @@ public class PlacementSystem {
 
         System.out.print("Enter Minimum CGPA: ");
         double minCgpa = scanner.nextDouble();
+        scanner.nextLine(); // Consume the newline character
 
         System.out.print("Enter Eligible Branch: ");
         String eligibleBranch = scanner.nextLine();

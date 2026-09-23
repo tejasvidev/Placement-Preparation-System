@@ -9,6 +9,14 @@ public class Student extends User implements Eligible{
     private double cgpa;
     private String branch;
 
+    public int getStudentId(){
+        return studentId;
+    }
+
+    public static int getTotalStudents(){
+        return totalStudents;
+    }
+
     public Student(int studentId, String name, String email, double cgpa, String branch){
         super(name, email);
         totalStudents++;
@@ -18,10 +26,7 @@ public class Student extends User implements Eligible{
         this.branch=branch;
     }
 
-    public int getStudentId(){
-        return studentId;
-    }
-
+    
     public void displayStudentDetails(){
         System.out.println("Student Id: "+studentId);
         System.out.println("Name: "+name);
@@ -33,10 +38,6 @@ public class Student extends User implements Eligible{
     @Override 
     public boolean checkEligibility(Job job){
         return this.cgpa>= job.getMinimumCgpa() && this.branch.equalsIgnoreCase(job.getEligibleBranch());
-    }
-
-    public static int getTotalStudents(){
-        return totalStudents;
     }
 
     public void displayFormattedProfile(){
